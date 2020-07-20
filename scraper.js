@@ -33,4 +33,4 @@ async function scrapeProduct(url) {
     browser.close();
 }
 
-scrapeProduct("https://jisho.org/word/%E7%85%99%E8%8D%89")
+scrapeProduct("https://jisho.org/word/%E5%B7%9D")
