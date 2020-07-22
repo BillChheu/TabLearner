@@ -1,5 +1,6 @@
 const request = require("request");
 const cheerio = require("cheerio");
+const fs = require("fs");
 
 function scrapeSite(url) {
     request(url, (error, response, html) => {
@@ -12,6 +13,22 @@ function scrapeSite(url) {
             // TODO: ADD SENTENCE?
 
             // TODO: OUTPUT TO FILE
+            const japaneseInfo = {
+                word: japanese,
+                furigana: furigana,
+                definition: definition
+            }
+
+            const jsonString = JSON.stringify(japaneseInfo, null, 2);
+            fs.writeFile("randomWord.json", jsonString, (error) => {
+                if (error) {
+                    console.log("Error writing file", error);
+                } else {
+                    console.log("Successfully wrote file")
+                }
+            });
+
+
            console.log(japanese, furigana, definition);
         }
         
