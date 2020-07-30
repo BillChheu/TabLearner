@@ -1,5 +1,6 @@
 const request = require("request");
 const cheerio = require("cheerio");
+const schedule = require("node-schedule");
 const fs = require("fs");
 
 function scrapeSite(url) {
@@ -59,4 +60,8 @@ function getRandomWord(callback) {
     });
 }
 
-getRandomWord(scrapeSite);
+let temp = schedule.scheduleJob("*/5 * * * *", () => {
+    getRandomWord(scrapeSite);
+});
+
+
