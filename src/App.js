@@ -11,6 +11,7 @@ function App() {
     <div>
          <h1 className = "japanese">{randomWord.word}</h1>
          <h2 className = "definition">{randomWord.definition}</h2>
+         <h3 className = "furigana">{randomWord.furigana}</h3>
          <a href = {randomWord.url} className = "link">Source</a>
       
     </div>

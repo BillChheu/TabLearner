@@ -2,7 +2,7 @@
 
 body {
   /* maybe add categories for background */
-  background-image: url(https://source.unsplash.com/2560x1440/daily?japan);
+  background-image: url(https://source.unsplash.com/2560x1440/daily);
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -22,7 +22,7 @@ h2 {
 
 h3 {
   color: white;
-  font-size: 1.5vw;
+  font-size: 1.3vw;
 }
 a {
   color: white;
@@ -42,6 +42,10 @@ a {
   position: fixed;
   top: 54%;
   left: 51.5%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 50ch;
   transform: translate(-60%, -50%);
 }
 
@@ -50,5 +54,12 @@ a {
   top: 96%;
   left: 96%;
   color:blue;
+}
+
+.furigana {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
