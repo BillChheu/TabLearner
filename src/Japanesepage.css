@@ -2,7 +2,8 @@
 
 body {
   /* maybe add categories for background */
-  background-image: url(https://source.unsplash.com/2560x1440/daily);
+ /* background-image: url(https://source.unsplash.com/2560x1440/daily?Japan); */
+  background-image: url(https://i.pinimg.com/originals/b8/8e/59/b88e5919775afd0de88efa8ebcaf1250.png);
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -30,6 +31,9 @@ a {
 }
 
 
+ 
+
+
 .japanese {
   position: fixed; /* or absolute */
   top: 50%;
@@ -41,12 +45,12 @@ a {
 .definition {
   position: fixed;
   top: 54%;
-  left: 51.5%;
+  left: 50%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 50ch;
-  transform: translate(-60%, -50%);
+  max-width: 35ch;
+  transform: translate(-50%, -54%);
 }
 
 .link {
@@ -58,8 +62,10 @@ a {
 
 .furigana {
   position: fixed;
-  top: 40%;
+  top: 38%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  letter-spacing: 1.5px;
+ 
+ 
 }
 

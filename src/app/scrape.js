@@ -64,4 +64,8 @@ let temp = schedule.scheduleJob("*/5 * * * *", () => {
     getRandomWord(scrapeSite);
 });
 
+function reRoll() {
+    getRandomWord(scrapeSite);
+}
+
 
