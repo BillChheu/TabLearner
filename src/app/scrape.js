@@ -4,18 +4,31 @@ const schedule = require("node-schedule");
 const fs = require("fs");
 
 function scrapeSite(url) {
+    let kanjiFurigana = [];
     request(url, (error, response, html) => {
         if (!error && response.statusCode === 200) {
             const $ = cheerio.load(html);
 
            const japanese = $(".text").last().text().replace(/\s+/g,'');
-           const furigana = $(".furigana").first().text().replace(/\s+/g,'');
+        //   const furigana = $(".furigana").first().text().replace(/\s+/g,'');
+
+
+        
+            const furigana = $(".kanji-1-up").each(function(index) {
+                kanjiFurigana.push($(this).text());
+            });
+            const furigana2 = $(".kanji-2-up").each(function(index) {
+                kanjiFurigana.push($(this).text());
+            });
+            const furigana3 = $(".kanji-3-up").each(function(index) {
+                kanjiFurigana.push($(this).text());
+            });
+            
            const definition = $(".meaning-meaning").html();
-            // TODO: ADD SENTENCE?
 
             const japaneseInfo = {
                 word: japanese,
-                furigana: furigana,
+                furigana: kanjiFurigana,
                 definition: definition,
                 url: url
             }
@@ -30,7 +43,7 @@ function scrapeSite(url) {
             });
 
 
-           console.log(japanese, furigana, definition);
+           console.log(japanese, kanjiFurigana, definition);
         }
         
     
@@ -38,7 +51,7 @@ function scrapeSite(url) {
 }
 
 function getRandomWord(callback) {
-    let randomWord = Math.floor((Math.random() * 21073) + 1);
+    let randomWord = Math.floor( (Math.random() * 21073) + 1);
     // 20 entries per page
     let page = randomWord / 20;
     let wordOnPage = randomWord % 20;
@@ -60,12 +73,11 @@ function getRandomWord(callback) {
     });
 }
 
-let temp = schedule.scheduleJob("*/5 * * * *", () => {
-    getRandomWord(scrapeSite);
-});
+//let temp = schedule.scheduleJob("*/5 * * * *", () => {
+  //  getRandomWord(scrapeSite);
+//}); 
 
-function reRoll() {
-    getRandomWord(scrapeSite);
-}
+
+scrapeSite("https://jisho.org/word/%E4%BC%9A%E7%A4%BE");
 
 

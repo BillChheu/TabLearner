@@ -13,15 +13,18 @@ export default class japanesePage extends Component {
         console.log(rect.left + "px");
     }
 
+
     render() {
         return( 
             <div>
-     
-         <h1 className = "japanese">{randomWord.word}</h1>
-         <h2 className = "definition">{randomWord.definition}</h2>
-         <h3 className = "furigana" id = "furigana">{randomWord.furigana}</h3>
+
+                <h1 className = "japanese">{randomWord.word}</h1>
+                <h2 className = "definition">{randomWord.definition}</h2>
+                <h3 className = "furigana" id = "furigana">{randomWord.furigana}</h3>
          
-         <a href = {randomWord.url} className = "link">Source</a>
+                <a href = {randomWord.url} className = "link">Source</a>
+
+              
 
             </div>
         );
