@@ -5,30 +5,42 @@ const fs = require("fs");
 
 function scrapeSite(url) {
     let kanjiFurigana = [];
+    let furiganaPosition = [];
     request(url, (error, response, html) => {
         if (!error && response.statusCode === 200) {
             const $ = cheerio.load(html);
 
            const japanese = $(".text").last().text().replace(/\s+/g,'');
-        //   const furigana = $(".furigana").first().text().replace(/\s+/g,'');
 
-
-        
+           
+            // getting furigana and separating them by their "kanji representative"
             const furigana = $(".kanji-1-up").each(function(index) {
-                kanjiFurigana.push($(this).text());
+                kanjiFurigana[$(this).index()] = ($(this).text() + "  ");
             });
-            const furigana2 = $(".kanji-2-up").each(function(index) {
-                kanjiFurigana.push($(this).text());
+           const furigana2 = $(".kanji-2-up").each(function(index) {
+                kanjiFurigana[$(this).index()] = ($(this).text() + " ");
             });
             const furigana3 = $(".kanji-3-up").each(function(index) {
-                kanjiFurigana.push($(this).text());
-            });
+                kanjiFurigana[$(this).index()] = ($(this).text() + "");
+          }); 
             
            const definition = $(".meaning-meaning").html();
 
+           let furiganaIndex = 0;
+           for (let i = 0; i < japanese.length; i++) {
+               // checks if the character is kanji
+               if (japanese[i] >= "\u4e00" && japanese[i] <= "\u9faf") {
+                    furiganaPosition.push(kanjiFurigana[furiganaIndex]);
+                    furiganaIndex++;
+               } else {
+                   furiganaPosition.push(" ");
+               }
+
+           }
+
             const japaneseInfo = {
                 word: japanese,
-                furigana: kanjiFurigana,
+                furigana: furiganaPosition,
                 definition: definition,
                 url: url
             }
@@ -43,7 +55,7 @@ function scrapeSite(url) {
             });
 
 
-           console.log(japanese, kanjiFurigana, definition);
+           console.log(japanese, furiganaPosition, definition);
         }
         
     
@@ -56,12 +68,14 @@ function getRandomWord(callback) {
     let page = randomWord / 20;
     let wordOnPage = randomWord % 20;
 
+    // url of common japansese words according to jisho.org
     let url = "https://jisho.org/search/%23common%23words?page=" + page;
 
     request(url, (error, response, html) => {
         if (!error && response.statusCode === 200) {
             const $ = cheerio.load(html);
 
+            // gets link of the word
             let randomJapaneseLink = $(".light-details_link").eq(wordOnPage).attr("href");
 
             // addes https to the link so that the request can handle the link
@@ -73,11 +87,12 @@ function getRandomWord(callback) {
     });
 }
 
+// CRON job
 //let temp = schedule.scheduleJob("*/5 * * * *", () => {
   //  getRandomWord(scrapeSite);
 //}); 
 
 
-scrapeSite("https://jisho.org/word/%E4%BC%9A%E7%A4%BE");
+scrapeSite("https://jisho.org/word/%E6%96%99%E7%90%86");
 
 
