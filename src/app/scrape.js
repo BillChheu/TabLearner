@@ -18,7 +18,7 @@ function scrapeSite(url) {
                 kanjiFurigana[$(this).index()] = ($(this).text() + "  ");
             });
            const furigana2 = $(".kanji-2-up").each(function(index) {
-                kanjiFurigana[$(this).index()] = ($(this).text() + " ");
+                kanjiFurigana[$(this).index()] = ($(this).text() + "   ");
             });
             const furigana3 = $(".kanji-3-up").each(function(index) {
                 kanjiFurigana[$(this).index()] = ($(this).text() + "");
@@ -88,11 +88,11 @@ function getRandomWord(callback) {
 }
 
 // CRON job
-//let temp = schedule.scheduleJob("*/5 * * * *", () => {
-  //  getRandomWord(scrapeSite);
-//}); 
+let temp = schedule.scheduleJob("* * /6 * * *", () => {
+    getRandomWord(scrapeSite);
+}); 
 
 
-scrapeSite("https://jisho.org/word/%E6%96%99%E7%90%86");
+//scrapeSite("https://jisho.org/word/%E6%96%99%E7%90%86");
 
 

@@ -2,8 +2,8 @@
 
 body {
   /* maybe add categories for background */
- /* background-image: url(https://source.unsplash.com/2560x1440/daily?Japan); */
-  background-image: url(https://i.pinimg.com/originals/b8/8e/59/b88e5919775afd0de88efa8ebcaf1250.png);
+  background-image: url(https://source.unsplash.com/2560x1440/daily?nature); 
+  /* background-image: url(https://i.pinimg.com/originals/b8/8e/59/b88e5919775afd0de88efa8ebcaf1250.png); */
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -14,20 +14,24 @@ h1 {
   margin: 0;
   font-size: 5vw;
   max-width: 100vw;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
 }
 
 h2 {
   color:white;
   font-size: 2vw;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
 }
 
 h3 {
   color: white;
   font-size: 1.5vw;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
 }
 a {
   color: white;
   font-size: 1vw;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
 }
 
 
@@ -64,7 +68,7 @@ a {
   position: fixed;
   top: 37%;
   left: 50%;
-  letter-spacing: 6px;
+  letter-spacing: 5px;
  
  
 }

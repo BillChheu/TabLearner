@@ -8,7 +8,7 @@ export default class japanesePage extends Component {
         let elem = document.querySelector("h1");
         let rect = elem.getBoundingClientRect()
         let furigana = document.getElementById("furigana")
-        furigana.style.left = rect.x + "px";
+        furigana.style.left = rect.x + 10 + "px";
 
         console.log(rect.left + "px");
     }
