@@ -3,6 +3,8 @@ const cheerio = require("cheerio");
 const schedule = require("node-schedule");
 const fs = require("fs");
 
+
+
 function scrapeSite(url) {
     let kanjiFurigana = [];
     let furiganaPosition = [];
@@ -88,9 +90,13 @@ function getRandomWord(callback) {
 }
 
 // CRON job
-let temp = schedule.scheduleJob("* * /6 * * *", () => {
+let temp = schedule.scheduleJob("* * /2 * * *", () => {
     getRandomWord(scrapeSite);
 }); 
+
+
+
+
 
 
 //scrapeSite("https://jisho.org/word/%E6%96%99%E7%90%86");
